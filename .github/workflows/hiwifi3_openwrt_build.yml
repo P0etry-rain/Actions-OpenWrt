@@ -165,14 +165,26 @@ jobs:
         echo "::set-output name=status::success"
 
     - name: Upload firmware to release
-      uses: softprops/action-gh-release@v1
-      if: steps.tag.outputs.status == 'success' && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      id: release
+      uses: ncipollo/release-action@v1
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
-        body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*
+        name: 🚀Autobuild / ${{ env.PRODUCT_NAME }} / ${{ env.DATE }}
+        allowUpdates: true
+        tag: ${{ env.FILE_NAME }}
+        commit: master
+        token: ${{ secrets.GITHUB_TOKEN }}
+        body: |
+          🚀 Autobuild | 自动编译
+          1、本固件为自动编译
+          2、发行版中只提供完整的固件
+          3、需要单独IPK请到分支下载
+          ~~4、驱动：默认NSS加速和sfe加速~~
+          支持已刷WEB升级的openwrt固件，刷入方式：首选恢复出厂设置，然后再系统升级不保留配置刷入.
+          全能版每天都会拉取最新源码更新.
+          默认IP： 192.168.10.1 默认密码： password
+          当前使用版本:【编译前的最后一次[➦主源码](https://github.com/coolsnowwolf/lede)更新记录】
+          ${{ env.useVersionInfo }}
+        artifacts: ${{ env.FIRMWARE }}/*
 
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
