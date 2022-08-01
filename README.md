@@ -25,6 +25,7 @@ A template for building OpenWrt with GitHub Actions
 ## Usage (for compile)
 ```sh
 cd openwrt/ && make menuconfig # make config file
+
 rm -f .config.old && make defconfig && ./scripts/diffconfig.sh > seed.config && cat seed.config # show simplified config
 ```
 ## Credits
