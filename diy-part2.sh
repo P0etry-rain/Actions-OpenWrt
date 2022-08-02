@@ -37,7 +37,7 @@ rm -rf package/lean/luci-theme-netgear
 
 #修改默认主题为argon
 git clone https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
-sed -i 's/luci-theme-bootstrap/luci-theme-material/g' feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 # sed -i 's/luci-theme-bootstrap/luci-theme-material/g' feeds/luci/collections/luci/Makefile
 
 ./scripts/feeds update -a
