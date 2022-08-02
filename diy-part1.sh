@@ -44,5 +44,4 @@ sed -i '$a src-git-full liuran001 https://github.com/liuran001/openwrt-packages'
 # passwall依赖
 sed -i '$a src-git-full passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 sed -i '$a src-git-full xiaoqingfeng https://github.com/xiaoqingfengATGH/feeds-xiaoqingfeng' feeds.conf.default
-sed -i '$a src-git-full mtk https://github.com/Nossiac/mtk-openwrt-feeds;lede-17.01' feeds.conf.default
 #====================================================================
